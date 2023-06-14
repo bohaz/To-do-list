@@ -93,20 +93,24 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 cd my-folder
-git clone https://github.com/bohaz/capstone-project1.git
+git clone https://github.com/bohaz/To-do-list.git
 
 ### Install
 
 
-To install all dependencies, run:
+Install this project with:
+
+-Install Node Modules
 
 npm install
 
 ### Usage
 
-To run this project, you need to follow these instructions
+To run this project, execute the following command:
 
-Open the index.html in your browser
+-Start the development server
+
+npm start
 
 ### Run tests
 
