@@ -1,70 +1,76 @@
 import './style.css';
+import {
+  addTask, deleteTask, saveTasks, loadTasksFromLocalStorage,
+} from './todoFunctions.js';
+
+const listNameElement = document.getElementById('list-name');
+const newTaskInputElement = document.getElementById('new-task-input');
+const addTaskButton = document.getElementById('add-task-button');
+const taskListElement = document.getElementById('task-list');
+const clearCompletedButton = document.getElementById('clear-completed');
 
 const listName = "Today's To-Do List";
-
-const tasks = [
-  { description: 'wash the dishes', completed: false, index: 1 },
-  { description: 'complete To Do list project', completed: true, index: 2 },
-  { description: 'wash the car', completed: false, index: 3 },
-];
+let tasks = loadTasksFromLocalStorage();
 
 function renderTasks() {
-  const todoList = document.getElementById('todo-list');
-  todoList.innerHTML = '';
+  taskListElement.innerHTML = '';
 
-  const listNameHeader = document.createElement('h1');
-  listNameHeader.textContent = listName;
-  todoList.appendChild(listNameHeader);
-
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
+    listItem.className = 'task-item';
+
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
+    checkbox.className = 'task-item-checkbox';
     listItem.appendChild(checkbox);
-    listItem.appendChild(document.createTextNode(task.description));
-    todoList.appendChild(listItem);
+
+    const descriptionElement = document.createElement('span');
+    descriptionElement.textContent = task.description;
+    descriptionElement.className = 'task-item-description';
+    listItem.appendChild(descriptionElement);
+
+    const deleteButton = document.createElement('span');
+    deleteButton.className = 'task-item-delete fas fa-trash';
+    listItem.appendChild(deleteButton);
+
+    const optionsButton = document.createElement('span');
+    optionsButton.className = 'task-item-options fas fa-ellipsis-v';
+    listItem.appendChild(optionsButton);
+
+    taskListElement.appendChild(listItem);
+
+    checkbox.addEventListener('change', () => {
+      task.completed = checkbox.checked;
+      saveTasks(tasks);
+    });
+
+    deleteButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      deleteTask(tasks, index);
+      renderTasks();
+      saveTasks(tasks);
+    });
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const todoList = document.getElementById('todo-list');
+  listNameElement.textContent = listName;
+  renderTasks();
 
-  tasks.sort((a, b) => a.index - b.index);
-
-  if (todoList.children.length === tasks.length) {
-    return;
-  }
-
-  todoList.innerHTML = '';
-
-  const listNameHeader = document.createElement('h1');
-  listNameHeader.textContent = listName;
-  todoList.appendChild(listNameHeader);
-
-  tasks.forEach((task) => {
-    const listItem = document.createElement('li');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = task.completed;
-    listItem.appendChild(checkbox);
-    listItem.appendChild(document.createTextNode(task.description));
-    todoList.appendChild(listItem);
+  addTaskButton.addEventListener('click', () => {
+    const description = newTaskInputElement.value.trim();
+    if (description) {
+      addTask(tasks, description);
+      newTaskInputElement.value = '';
+      renderTasks();
+      saveTasks(tasks);
+    }
   });
 
-  const clearCompletedButton = document.createElement('button');
-  clearCompletedButton.textContent = 'Clear All Completed';
-  clearCompletedButton.classList.add('clear-button');
-  todoList.appendChild(clearCompletedButton);
-
   clearCompletedButton.addEventListener('click', () => {
-    tasks.forEach((task) => {
-      if (task.completed) {
-        const taskIndex = tasks.indexOf(task);
-        tasks.splice(taskIndex, 1);
-      }
-    });
-
+    tasks = tasks.filter((task) => !task.completed);
     renderTasks();
+    saveTasks(tasks);
   });
 });

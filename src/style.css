@@ -20,7 +20,7 @@ ul {
   padding: 20px;
   background-color: #f7f7f7;
   border-radius: 4px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #todo-list li {
@@ -52,7 +52,51 @@ ul {
   color: #999;
 }
 
-.clear-button {
+#clear-completed {
   width: 100%;
   height: 40px;
+  border: none;
+  color: grey;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+}
+
+.task-item-checkbox {
+  margin-right: 10px;
+}
+
+.task-item-description {
+  flex-grow: 1;
+}
+
+.task-item-delete {
+  cursor: pointer;
+  color: grey;
+  margin-left: 10px;
+}
+
+#new-task-container {
+  display: flex;
+  align-items: center;
+}
+
+#new-task-input {
+  flex-grow: 1;
+  padding-right: 40px; 
+  border: none;
+  width: 83%;
+  height: 30px;
+  background-color: transparent;
+}
+
+#add-task-button {
+  border: none;
+  color: #999;
+}
+
+.task-item-options {
+  margin-left: 10px;
 }
