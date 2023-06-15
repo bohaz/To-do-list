@@ -1,7 +1,17 @@
 import './style.css';
+
 import {
-  addTask, deleteTask, saveTasks, editTaskDescription, loadTasksFromLocalStorage,
+  addTask,
+  deleteTask,
+  saveTasks,
+  editTaskDescription,
+  loadTasksFromLocalStorage,
 } from './todoFunctions.js';
+
+import {
+  updateTaskStatus,
+  clearCompletedTasks,
+} from './statusFunctions.js';
 
 const listNameElement = document.getElementById('list-name');
 const newTaskInputElement = document.getElementById('new-task-input');
@@ -42,6 +52,7 @@ function renderTasks() {
 
     checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
+      updateTaskStatus(tasks);
       saveTasks(tasks);
     });
 
@@ -83,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   clearCompletedButton.addEventListener('click', () => {
-    tasks = tasks.filter((task) => !task.completed);
+    tasks = clearCompletedTasks(tasks);
     renderTasks();
     saveTasks(tasks);
   });
