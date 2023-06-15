@@ -70,7 +70,6 @@ HTML5, CSS3, JavaScript, Git and Github
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,7 +135,7 @@ You can deploy this project using:
 ## 👥 Authors <a name="authors"></a>
 
 
-👤 **Author1**
+👤 **Ricardo Martínez**
 
 - GitHub: [@bohaz](https://github.com/githubhandle)
 - Twitter: [@Ricardo29115571](https://twitter.com/twitterhandle)
