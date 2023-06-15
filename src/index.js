@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  addTask, deleteTask, saveTasks, loadTasksFromLocalStorage,
+  addTask, deleteTask, saveTasks, editTaskDescription, loadTasksFromLocalStorage,
 } from './todoFunctions.js';
 
 const listNameElement = document.getElementById('list-name');
@@ -50,6 +50,20 @@ function renderTasks() {
       deleteTask(tasks, index);
       renderTasks();
       saveTasks(tasks);
+    });
+
+    descriptionElement.addEventListener('click', () => {
+      descriptionElement.contentEditable = true;
+      descriptionElement.focus();
+    });
+
+    descriptionElement.addEventListener('blur', () => {
+      descriptionElement.contentEditable = false;
+      const newDescription = descriptionElement.textContent.trim();
+      if (newDescription !== task.description) {
+        editTaskDescription(tasks, index, newDescription);
+        saveTasks(tasks);
+      }
     });
   });
 }

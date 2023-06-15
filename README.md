@@ -135,7 +135,7 @@ You can deploy this project using:
 ## 👥 Authors <a name="authors"></a>
 
 
-👤 **Author1**
+👤 **Ricardo Martínez**
 
 - GitHub: [@bohaz](https://github.com/githubhandle)
 - Twitter: [@Ricardo29115571](https://twitter.com/twitterhandle)
