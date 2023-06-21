@@ -90,8 +90,8 @@ describe('deleteTask', () => {
   test('should delete a task when there is more than 1 task in tasks', () => {
     // Arrange
     const tasks = [{ description: 'Task 1', completed: false, index: 1 },
-    { description: 'Task 2', completed: false, index: 2 },
-  ]
+      { description: 'Task 2', completed: false, index: 2 },
+    ];
     const indexToDelete = 1;
 
     // Act
