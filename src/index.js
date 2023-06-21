@@ -1,17 +1,12 @@
 import './style.css';
-
 import {
   addTask,
   deleteTask,
   saveTasks,
   editTaskDescription,
   loadTasksFromLocalStorage,
-} from './todoFunctions.js';
-
-import {
-  updateTaskStatus,
-  clearCompletedTasks,
-} from './statusFunctions.js';
+} from './modules/todoFunctions.js';
+import { updateTaskStatus, clearCompletedTasks } from './modules/statusFunctions.js';
 
 const listNameElement = document.getElementById('list-name');
 const newTaskInputElement = document.getElementById('new-task-input');
@@ -68,6 +63,13 @@ function renderTasks() {
       descriptionElement.focus();
     });
 
+    descriptionElement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        descriptionElement.blur();
+      }
+    });
+
     descriptionElement.addEventListener('blur', () => {
       descriptionElement.contentEditable = false;
       const newDescription = descriptionElement.textContent.trim();
@@ -84,12 +86,32 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
 
   addTaskButton.addEventListener('click', () => {
-    const description = newTaskInputElement.value.trim();
-    if (description) {
-      addTask(tasks, description);
-      newTaskInputElement.value = '';
-      renderTasks();
-      saveTasks(tasks);
+    const addNewTask = () => {
+      const description = newTaskInputElement.value.trim();
+      if (description) {
+        addTask(tasks, description);
+        newTaskInputElement.value = '';
+        renderTasks();
+        saveTasks(tasks);
+      }
+    };
+
+    addNewTask();
+  });
+
+  newTaskInputElement.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      const addNewTask = () => {
+        const description = newTaskInputElement.value.trim();
+        if (description) {
+          addTask(tasks, description);
+          newTaskInputElement.value = '';
+          renderTasks();
+          saveTasks(tasks);
+        }
+      };
+
+      addNewTask();
     }
   });
 
