@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687385465633" clover="3.2.0">
-  <project timestamp="1687385465634" name="All files">
-    <metrics statements="12" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="3" elements="25" coveredelements="9" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1"/>
-    <file name="todoFunctions.js" path="C:\Users\elizabeth del carmen\Desktop\Workspace\Module- 2\To-do-list\src\modules\todoFunctions.js">
-      <metrics statements="12" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="3"/>
+<coverage generated="1687386410504" clover="3.2.0">
+  <project timestamp="1687386410504" name="All files">
+    <metrics statements="12" coveredstatements="7" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="4" elements="25" coveredelements="11" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1"/>
+    <file name="todoFunctions.js" path="C:\Users\glaub\OneDrive\Desktop\Microverse - Full Time Course\To-do-list-1\src\modules\todoFunctions.js">
+      <metrics statements="12" coveredstatements="7" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="4"/>
       <line num="2" count="4" type="stmt"/>
       <line num="3" count="4" type="stmt"/>
       <line num="8" count="4" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="18" count="4" type="stmt"/>
+      <line num="19" count="4" type="stmt"/>
       <line num="23" count="0" type="cond" truecount="0" falsecount="4"/>
       <line num="24" count="0" type="stmt"/>
       <line num="29" count="0" type="stmt"/>

@@ -73,17 +73,66 @@ test('should add a task with the correct completed status', () => {
 });
 
 describe('deleteTask', () => {
-  test('should delete a task', () => {
+  test('should delete a task when there is only 1 task in tasks', () => {
     // Arrange
     const tasks = [
       { description: 'Task 1', completed: false, index: 1 },
     ];
-    const index = 0;
+    const indexToDelete = 0;
 
     // Act
-    deleteTask(tasks, index);
+    deleteTask(tasks, indexToDelete);
 
     // Assert
     expect(tasks.length).toBe(0);
+  });
+
+  test('should delete a task when there is more than 1 task in tasks', () => {
+    // Arrange
+    const tasks = [{ description: 'Task 1', completed: false, index: 1 },
+    { description: 'Task 2', completed: false, index: 2 },
+  ]
+    const indexToDelete = 1;
+
+    // Act
+    deleteTask(tasks, indexToDelete);
+
+    // Assert
+    expect(tasks.length).toBe(1);
+    expect(tasks[0].description).toBe('Task 1');
+  });
+
+  test('should update indexes of tasks after deleting a task', () => {
+    // Arrange
+    const tasks = [
+      { description: 'Task 1', completed: false, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+      { description: 'Task 3', completed: false, index: 3 },
+    ];
+    const indexToDelete = 1; // Index of the task to delete
+
+    // Act
+    deleteTask(tasks, indexToDelete);
+
+    // Assert
+    expect(tasks[0].index).toBe(1);
+    expect(tasks[1].index).toBe(2);
+  });
+
+  test('should not modify tasks array if the index is out of bounds', () => {
+    // Arrange
+    const tasks = [
+      { description: 'Task 1', completed: false, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+    ];
+    const invalidIndex = 5; // Index out of bounds
+
+    // Act
+    deleteTask(tasks, invalidIndex);
+
+    // Assert
+    expect(tasks.length).toBe(2);
+    expect(tasks[0].description).toBe('Task 1');
+    expect(tasks[1].description).toBe('Task 2');
   });
 });
