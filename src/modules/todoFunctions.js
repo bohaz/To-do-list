@@ -8,7 +8,7 @@ export function addTask(tasks, description) {
   tasks.push(newTask);
 }
 
-export function updateIndexes(tasks) {
+function updateIndexes(tasks) {
   tasks.forEach((task, index) => {
     task.index = index + 1;
   });
@@ -33,3 +33,5 @@ export function loadTasksFromLocalStorage() {
   const storedTasks = localStorage.getItem('tasks');
   return storedTasks ? JSON.parse(storedTasks) : [];
 }
+
+export { updateIndexes as default };
