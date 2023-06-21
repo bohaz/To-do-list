@@ -1,4 +1,4 @@
-export function addTask(tasks, description) {
+function addTask(tasks, description) {
   const newIndex = tasks.length;
   const newTask = {
     description,
@@ -14,24 +14,31 @@ function updateIndexes(tasks) {
   });
 }
 
-export function deleteTask(tasks, index) {
+function deleteTask(tasks, index) {
   tasks.splice(index, 1);
   updateIndexes(tasks);
 }
 
-export function editTaskDescription(tasks, index, newDescription) {
+function editTaskDescription(tasks, index, newDescription) {
   if (index >= 0 && index < tasks.length) {
     tasks[index].description = newDescription;
   }
 }
 
-export function saveTasks(tasks) {
+function saveTasks(tasks) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-export function loadTasksFromLocalStorage() {
+function loadTasksFromLocalStorage() {
   const storedTasks = localStorage.getItem('tasks');
   return storedTasks ? JSON.parse(storedTasks) : [];
 }
 
-export { updateIndexes as default };
+export default {
+  addTask,
+  deleteTask,
+  editTaskDescription,
+  saveTasks,
+  loadTasksFromLocalStorage,
+  updateIndexes
+};
