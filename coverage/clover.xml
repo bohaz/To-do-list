@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687386410504" clover="3.2.0">
-  <project timestamp="1687386410504" name="All files">
-    <metrics statements="12" coveredstatements="7" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="4" elements="25" coveredelements="11" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1"/>
+<coverage generated="1687453343500" clover="3.2.0">
+  <project timestamp="1687453343500" name="All files">
+    <metrics statements="15" coveredstatements="10" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="7" elements="35" coveredelements="21" complexity="0" loc="15" ncloc="15" packages="1" files="2" classes="2"/>
+    <file name="statusFunctions.js" path="C:\Users\glaub\OneDrive\Desktop\Microverse - Full Time Course\To-do-list-1\src\modules\statusFunctions.js">
+      <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <line num="2" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="8" count="7" type="stmt"/>
+    </file>
     <file name="todoFunctions.js" path="C:\Users\glaub\OneDrive\Desktop\Microverse - Full Time Course\To-do-list-1\src\modules\todoFunctions.js">
       <metrics statements="12" coveredstatements="7" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="4"/>
       <line num="2" count="4" type="stmt"/>
