@@ -7,3 +7,4 @@ export function updateTaskStatus(tasks, index, completed) {
 export function clearCompletedTasks(tasks) {
   return tasks.filter((task) => !task.completed);
 }
+
